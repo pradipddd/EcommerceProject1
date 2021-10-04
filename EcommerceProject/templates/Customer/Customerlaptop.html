@@ -1,0 +1,27 @@
+{% extends 'Customer/Base.html' %}
+
+
+{% block content %}
+{% for lap in laptop %}
+<div style="margin:3% 25%;">
+<div class="card mb-3">
+    <div class="row g-0">
+        <div class="col-md-4">
+            <img src="{{lap.limage.url}}" style="width:100%;height: 100%;" class="img-fluid rounded-start" alt="Image Not Found">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title"><b>{{lap.brand_name}} {{lap.model_name}}</b></h5>
+                <p class="card-text">{{lap.ram}}</p>
+                <p class="card-text">{{lap.rom}}</p>
+                <p class="card-text">{{lap.processor}}</p>
+                <p class="card-text">{{lap.warranty}}</p>
+                <p class="card-text">{{lap.product.seller}}</p>
+                <p class="card-text"><a><button class="btn btn-info">Add to Wishlist</button></a>&nbsp;<a href="{% url 'customerorderitem' lap.id %}"><button class="btn btn-success">Add to Cart</button></a></p>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+{% endfor %}
+{% endblock %}
